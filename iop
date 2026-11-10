@@ -1,0 +1,156 @@
+here<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رسالة حب 💌</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a0033, #330066, #660033);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* القلوب المتطايرة */
+  .heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    animation: floatUp linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes floatUp {
+    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 50px 40px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(255, 0, 100, 0.3);
+    animation: fadeIn 1.5s ease;
+    position: relative;
+    z-index: 10;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .big-heart {
+    font-size: 80px;
+    animation: heartbeat 1.2s infinite;
+    display: inline-block;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+  }
+
+  h1 {
+    color: #ff4d8d;
+    margin: 20px 0;
+    font-size: 2em;
+    text-shadow: 0 0 20px rgba(255, 77, 141, 0.6);
+  }
+
+  p {
+    color: #fff;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 25px;
+  }
+
+  button {
+    background: linear-gradient(135deg, #ff4d8d, #ff0066);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 8px 25px rgba(255, 0, 102, 0.4);
+    font-weight: bold;
+  }
+  button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 0, 102, 0.6);
+  }
+  button:active { transform: scale(0.98); }
+
+  #message {
+    color: #ffd700;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 25px;
+    opacity: 0;
+    transition: opacity 0.8s, transform 0.8s;
+    transform: translateY(20px);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+  #message.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="big-heart">❤️</div>
+  <h1>إلى أغلى إنسانة</h1>
+  <p>كل قلبي معاك، وكل يوم بيعدي وأنت فيه أحلى وأجمل 💖</p>
+  <button onclick="showLove()">اضغط هنا 💌</button>
+  <div id="message"></div>
+</div>
+
+<script>
+  // قلوب متطايرة
+  const hearts = ['❤️','💖','💕','💗','💓','💘'];
+  function createHeart() {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (Math.random() * 20 + 15) + 'px';
+    h.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 10000);
+  }
+  setInterval(createHeart, 400);
+
+  // رسالة الحب
+  const messages = [
+    "أحبك في الله 💕",
+    "أنتِ أغلى من الدنيا كلها 💖",
+    "قلبي ملكك للأبد ❤️",
+    "كل يوم معاك أحلى يوم 🌹",
+    "أنتِ سبب ابتسامتي كل صباح 🌸"
+  ];
+  let idx = 0;
+  function showLove() {
+    const msg = document.getElementById('message');
+    msg.textContent = messages[idx % messages.length];
+    msg.classList.add('show');
+    idx++;
+    for (let i = 0; i < 15; i++) setTimeout(createHeart, i * 80);
+  }
+</script>
+
+</body>
+</html>
